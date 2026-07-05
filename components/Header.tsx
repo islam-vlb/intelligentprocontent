@@ -14,9 +14,11 @@ const NAV = [
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (
-    <span className="flex items-center gap-2">
-      <span className="text-primary text-2xl leading-none">⟁</span>
-      <span className={`font-heading text-xl font-bold tracking-tight ${dark ? "text-[#EAFFFB]" : "text-[#EAFFFB]"}`}>
+    <span className="flex items-center gap-3 group">
+      <span className="text-primary text-2xl leading-none group-hover:animate-pulse-slow transition-transform group-hover:scale-110 group-hover:rotate-12">
+        ⟐
+      </span>
+      <span className="font-heading text-xl font-bold tracking-tight gradient-text group-hover:animate-gradient transition-all duration-700">
         intelligentprocontentautomation
       </span>
     </span>
