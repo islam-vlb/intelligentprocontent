@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #080F0F;
+  --color-surface: #0D1717;
+  --color-surface-alt: #122020;
+  --color-navy: #0D4F4F;
+  --color-navy-light: #145C5C;
+  --color-primary: #00E5CC;
+  --color-secondary: #0D4F4F;
+  --color-accent: #5FFFE0;
+  --color-electric: #00E5CC;
+  --color-text: #EAFFFB;
+  --color-text-secondary: #9FCFC7;
+  --color-text-muted: #5C8582;
+  --radius: 16px;
+  --radius-lg: 24px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body), 'DM Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes underline-grow {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out 2s infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.7s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out;
+}
+
+.animate-underline-grow {
+  animation: underline-grow 1.2s ease-out 0.4s both;
+}
+
+.glass-card-dark {
+  background: rgba(13, 79, 79, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 229, 204, 0.12);
+}
+
+.premium-shadow {
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 229, 204, 0.04);
+}
+
+.glow-shadow {
+  box-shadow: 0 0 40px -10px rgba(0, 229, 204, 0.35);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-electric));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-2xl px-8 py-4 font-semibold text-bg transition-all duration-300;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  box-shadow: 0 10px 40px -10px rgba(0, 229, 204, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px -10px rgba(0, 229, 204, 0.6);
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center rounded-2xl border px-8 py-4 font-semibold transition-all duration-300;
+  color: var(--color-text);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.btn-ghost:hover {
+  background: rgba(0, 229, 204, 0.08);
+  border-color: rgba(0, 229, 204, 0.3);
+}
+
+.input-field {
+  @apply min-h-[50px] rounded-2xl px-4 py-3 text-sm transition-all duration-200;
+  background: var(--color-surface-alt);
+  border: 1px solid rgba(0, 229, 204, 0.12);
+  color: var(--color-text);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 229, 204, 0.15);
+}
+
+.input-field::placeholder {
+  color: var(--color-text-muted);
+}
+
+.section-container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.card-padding {
+  @apply p-6 sm:p-8 lg:p-10;
+}
