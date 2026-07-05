@@ -17,7 +17,7 @@ export function Logo({ dark = false }: { dark?: boolean }) {
     <span className="flex items-center gap-2">
       <span className="text-primary text-2xl leading-none">⟁</span>
       <span className={`font-heading text-xl font-bold tracking-tight ${dark ? "text-[#EAFFFB]" : "text-[#EAFFFB]"}`}>
-        Intelli<span className="text-primary">Pro</span>
+        intelligentprocontentautomation
       </span>
     </span>
   );
