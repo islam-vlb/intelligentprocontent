@@ -20,6 +20,40 @@ const DELIVERY_STEPS = [
   { n: "03", title: "Deploy", desc: "Open, customize, and put your new system to work with your team the same day." },
 ];
 
+function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-2xl border border-primary/10 bg-surface-alt p-5">
+      <h4 className="font-heading text-sm font-semibold text-primary mb-2">{title}</h4>
+      <div className="text-xs text-text-secondary leading-relaxed">{children}</div>
+    </div>
+  );
+}
+
+function CollapsiblePanel({ title, children, defaultOpen = false }: { title: string; children: React.ReactNode; defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="rounded-2xl border border-primary/10 bg-surface-alt overflow-hidden">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-5 py-4 text-left"
+      >
+        <span className="font-heading text-sm font-semibold text-[#EAFFFB]">{title}</span>
+        <svg
+          className={`w-4 h-4 text-primary transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      <div className={`${open ? "" : "hidden"} px-5 pb-5 text-sm text-text-secondary leading-relaxed`}>{children}</div>
+    </div>
+  );
+}
+
 export default function ProductDetailClient({
   product,
   related,
@@ -30,7 +64,7 @@ export default function ProductDetailClient({
   const { addItem, openCart } = useCart();
   const { has, toggle } = useWishlist();
   const [qty, setQty] = useState(1);
-  const content = PRODUCT_CONTENT[product.id] ?? { description: "", features: [] };
+  const content = PRODUCT_CONTENT[product.id] ?? { description: "", features: [], whoFor: [], overview: "", keyFeatures: [], aiPlatforms: [], recommendedUseCases: [], implementationGuide: [], productivityBenefits: [], fileFormats: [], skillLevel: "", deliveryInfo: "", supportInfo: "" };
   const wishlisted = has(product.id);
 
   function handleAdd() {
@@ -59,7 +93,9 @@ export default function ProductDetailClient({
               Digital Product — Instant Delivery
             </div>
             <p className="mt-6 text-text-secondary leading-relaxed max-w-2xl">{content.description}</p>
+
             <div className="h-px bg-primary/10 my-10" />
+
             <div>
               <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-5">What&apos;s Included</h2>
               <ul className="space-y-3 max-w-2xl">
@@ -73,7 +109,90 @@ export default function ProductDetailClient({
                 ))}
               </ul>
             </div>
+
             <div className="h-px bg-primary/10 my-10" />
+
+            <div>
+              <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-5">Key Features</h2>
+              <ul className="space-y-3 max-w-2xl">
+                {content.keyFeatures.map((kf) => (
+                  <li key={kf} className="flex items-start gap-3 text-sm text-text-secondary">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <svg className="w-3 h-3 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    </span>
+                    {kf}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="h-px bg-primary/10 my-10" />
+
+            <div>
+              <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-5">AI Platforms Supported</h2>
+              <div className="flex flex-wrap gap-3">
+                {content.aiPlatforms.map((p) => (
+                  <span key={p} className="inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">{p}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="h-px bg-primary/10 my-10" />
+
+            <div>
+              <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-5">Recommended Use Cases</h2>
+              <ul className="space-y-3 max-w-2xl">
+                {content.recommendedUseCases.map((u) => (
+                  <li key={u} className="flex items-start gap-3 text-sm text-text-secondary">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <svg className="w-3 h-3 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    </span>
+                    {u}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="h-px bg-primary/10 my-10" />
+
+            <div>
+              <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-5">Implementation Guide</h2>
+              <ol className="space-y-4 max-w-2xl list-decimal list-inside">
+                {content.implementationGuide.map((step, i) => (
+                  <li key={i} className="text-sm text-text-secondary leading-relaxed">{step}</li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="h-px bg-primary/10 my-10" />
+
+            <div>
+              <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-5">Productivity Benefits</h2>
+              <ul className="space-y-3 max-w-2xl">
+                {content.productivityBenefits.map((b) => (
+                  <li key={b} className="flex items-start gap-3 text-sm text-text-secondary">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <svg className="w-3 h-3 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+                    </span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="h-px bg-primary/10 my-10" />
+
+            <div>
+              <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-5">File Formats Included</h2>
+              <div className="flex flex-wrap gap-3">
+                {content.fileFormats.map((f) => (
+                  <span key={f} className="inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">{f}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="h-px bg-primary/10 my-10" />
+
             <div>
               <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-5">Who It&apos;s For</h2>
               <div className="flex flex-wrap gap-3">
@@ -82,7 +201,9 @@ export default function ProductDetailClient({
                 ))}
               </div>
             </div>
+
             <div className="h-px bg-primary/10 my-10" />
+
             <div>
               <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-6">How You&apos;ll Receive It</h2>
               <div className="grid gap-6 sm:grid-cols-3">
@@ -95,6 +216,7 @@ export default function ProductDetailClient({
                 ))}
               </div>
             </div>
+
             <div className="mt-16 max-w-2xl">
               <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-4">Frequently Asked Questions</h2>
               <div className="divide-y divide-primary/10 border-t border-b border-primary/10">
@@ -109,7 +231,71 @@ export default function ProductDetailClient({
                 ))}
               </div>
             </div>
+
+            <div className="mt-16">
+              <h2 className="font-heading text-2xl font-bold text-[#EAFFFB] mb-6">Product Information</h2>
+              <p className="text-sm text-text-secondary leading-relaxed mb-6">Everything you need to know before and after purchase.</p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <InfoCard title="Product Overview">
+                  <p>{content.overview}</p>
+                </InfoCard>
+                <InfoCard title="What&apos;s Included">
+                  <ul className="space-y-1.5">
+                    {content.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2">
+                        <span className="mt-1 flex-shrink-0 w-2 h-2 rounded-full bg-primary" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </InfoCard>
+                <InfoCard title="Features & Benefits">
+                  <ul className="space-y-1.5">
+                    {content.productivityBenefits.map((b) => (
+                      <li key={b} className="flex items-start gap-2">
+                        <span className="mt-1 flex-shrink-0 w-2 h-2 rounded-full bg-primary" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </InfoCard>
+                <InfoCard title="AI Compatibility">
+                  <p>Optimized for use with:</p>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {content.aiPlatforms.map((p) => (
+                      <span key={p} className="inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">{p}</span>
+                    ))}
+                  </div>
+                </InfoCard>
+                <InfoCard title="Recommended Workflows">
+                  <ul className="space-y-1.5">
+                    {content.recommendedUseCases.map((u) => (
+                      <li key={u} className="flex items-start gap-2">
+                        <span className="mt-1 flex-shrink-0 w-2 h-2 rounded-full bg-primary" />
+                        <span>{u}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </InfoCard>
+                <InfoCard title="Skill Level">
+                  <p>{content.skillLevel}</p>
+                </InfoCard>
+                <InfoCard title="Delivery Information">
+                  <p>{content.deliveryInfo}</p>
+                </InfoCard>
+                <InfoCard title="Support Information">
+                  <p>{content.supportInfo}</p>
+                </InfoCard>
+                <InfoCard title="Shipping / Delivery">
+                  <p>This is a fully digital product. There are no shipping charges. You will receive instant access instructions via email after your one-time purchase is completed.</p>
+                </InfoCard>
+                <InfoCard title="Returns Information">
+                  <p>Refunds are available within 30 days of your purchase date. Because this is a digital product, no physical return is required. Contact our support team to request a refund.</p>
+                </InfoCard>
+              </div>
+            </div>
           </div>
+
           <div className="lg:sticky lg:top-24 h-fit space-y-5 rounded-2xl border border-primary/15 bg-surface-alt p-6 shadow-xl shadow-black/20">
             <p className="text-3xl font-bold text-primary">${product.price.toFixed(2)}</p>
             <p className="text-xs text-text-secondary">One-time payment — no recurring charges</p>
