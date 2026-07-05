@@ -45,7 +45,7 @@ export default function ContactPage() {
           </div>
           <div className="rounded-2xl border border-primary/10 bg-surface-alt p-6">
             <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-primary mb-3">Business Address</h3>
-            <p className="text-sm text-text-secondary">Ecom Fire INC<br />{BUSINESS.address}</p>
+            <p className="text-sm text-text-secondary">Logi Depot Inc<br />{BUSINESS.address}</p>
           </div>
         </div>
       </div>

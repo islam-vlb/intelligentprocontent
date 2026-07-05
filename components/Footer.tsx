@@ -120,7 +120,7 @@ export default function Footer() {
           <div className="grid gap-2 text-sm text-text-muted sm:grid-cols-3">
             <p>{BUSINESS.phone}</p>
             <p>{BUSINESS.email}</p>
-            <p>Ecom Fire INC, {BUSINESS.address}</p>
+            <p>Logi Depot Inc, {BUSINESS.address}</p>
           </div>
           <div className="flex flex-col gap-2 text-sm">
             <p className="text-sm font-bold text-text-secondary">Charges appear as {BUSINESS.descriptor} on your statement</p>
@@ -128,7 +128,7 @@ export default function Footer() {
             <p className="text-sm font-bold text-red-600">⚠️ Individuals under 18 are not permitted to purchase</p>
           </div>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-6 border-t border-primary/5">
-            <p className="text-sm text-text-muted">© 2026 Ecom Fire INC — {BUSINESS.name}. All rights reserved.</p>
+            <p className="text-sm text-text-muted">© 2026 Logi Depot Inc — {BUSINESS.name}. All rights reserved.</p>
           </div>
         </div>
       </div>
