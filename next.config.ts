@@ -4,10 +4,7 @@ const nextConfig: NextConfig = {
   output: "standalone",
   outputFileTracingRoot: process.cwd(),
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "plus.unsplash.com" },
-    ],
+    unoptimized: true,
   },
 };
 

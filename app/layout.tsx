@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "@/components/Providers";
+import ImageErrorHandler from "@/components/ImageErrorHandler";
 
 const heading = Syne({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
         className={`${heading.variable} ${body.variable} font-body antialiased bg-bg text-[#EAFFFB]`}
       >
         <Providers>
+          <ImageErrorHandler />
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />
