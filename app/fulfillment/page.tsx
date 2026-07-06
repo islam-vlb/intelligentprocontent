@@ -8,7 +8,7 @@ export default function FulfillmentPage() {
         <section className="rounded-2xl border border-primary/10 bg-surface-alt p-6 sm:p-8">
           <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-4">Business &amp; Fulfillment Address</h2>
           <p className="text-base text-primary font-semibold mb-2">Logi Depot Inc</p>
-          <p className="text-sm text-text-secondary leading-relaxed">4711 34th St. N. Suite F<br/>St. Petersburg, FL 33714<br/>United States</p>
+          <p className="text-sm text-text-secondary leading-relaxed">Logi Depot Inc<br/>4711 34th St. N. Suite F<br/>St. Petersburg, FL 33714<br/>United States</p>
         </section>
         <section className="rounded-2xl border border-primary/10 bg-surface-alt p-6 sm:p-8">
           <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-4">Digital Delivery Model</h2>
