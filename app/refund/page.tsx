@@ -8,7 +8,7 @@ export default function RefundPage() {
       <div className="space-y-6">
         <section className="rounded-2xl border border-primary/10 bg-surface-alt p-6 sm:p-8">
           <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-4">30-Day Refund Window</h2>
-          <p className="text-sm text-text-secondary leading-relaxed">We offer a 30-day refund window from the date of purchase. If you are not satisfied with your digital content system for any reason, contact our support team at <strong className="text-primary">{BUSINESS.email}</strong> or <strong className="text-primary">{BUSINESS.phone}</strong> to request a refund.</p>
+          <p className="text-sm text-text-secondary leading-relaxed">We offer a 30-day refund window from the date your order is received. Refunds apply to all used and unused products. If you are not satisfied with your digital content system for any reason, contact our support team at <strong className="text-primary">{BUSINESS.email}</strong> or <strong className="text-primary">{BUSINESS.phone}</strong> to request a refund.</p>
         </section>
         <section className="rounded-2xl border border-primary/10 bg-surface-alt p-6 sm:p-8">
           <h2 className="font-heading text-xl font-semibold text-[#EAFFFB] mb-4">Digital Goods</h2>
