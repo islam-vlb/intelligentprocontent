@@ -20,8 +20,13 @@ const STEPS = [
   },
   {
     step: "03",
-    title: "Deploy Across Your Team",
-    desc: "Receive instant access by email and start using your new content system immediately — no waiting, no onboarding calls required.",
+    title: "Create Your Account",
+    desc: "Register (or log in) right after checkout to link your order to your Dashboard — takes less than a minute.",
+  },
+  {
+    step: "04",
+    title: "Download Anytime",
+    desc: "Access and download every system you've purchased anytime from your Dashboard — no need to dig through your inbox.",
   },
 ];
 
@@ -41,6 +46,7 @@ const FAQS = [
   { q: "Who are these systems designed for?", a: "Content marketers, marketing teams, agencies, and business owners who want to produce content consistently without reinventing their workflow every time." },
   { q: "Can I use these with my AI writing tools?", a: "Yes. Prompt systems are compatible with all major AI writing tools. Formats are plain text and easy to import." },
   { q: "Are updates included with my purchase?", a: "Each purchase includes the system at the version available at time of purchase. Content systems are self-contained and designed to be used indefinitely." },
+  { q: "How do I access my downloads after purchase?", a: "Create a free account (or log in) after checkout and every product you've purchased will be available to download anytime from your Dashboard." },
 ];
 
 export default function HomePage() {
@@ -55,7 +61,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <h2 className="font-heading text-3xl font-bold text-[#EAFFFB] sm:text-4xl mb-4">How It Works</h2>
-            <p className="text-lg text-text-secondary max-w-2xl">From selecting a system to deploying it with your team, three steps to a better content operation.</p>
+            <p className="text-lg text-text-secondary max-w-2xl">From selecting a system to downloading it from your Dashboard, four steps to a better content operation.</p>
           </div>
           <div className="relative">
             <div className="hidden sm:block absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />

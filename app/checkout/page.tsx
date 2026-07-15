@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
+import { useAuth } from "@/lib/auth-context";
+import { addOrder, savePendingOrder, OrderItem } from "@/lib/orders";
+import { FALLBACK_PRODUCTS } from "@/lib/supabase";
 import { BUSINESS } from "@/lib/config";
 import { US_STATES } from "@/lib/us-states";
 import PaymentIcons from "@/components/PaymentIcons";
@@ -10,6 +13,7 @@ import PaymentIcons from "@/components/PaymentIcons";
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, totalPrice, clear } = useCart();
+  const { user } = useAuth();
   const [agreed, setAgreed] = useState(false);
   const [state, setState] = useState("");
   const total = totalPrice;
@@ -17,8 +21,25 @@ export default function CheckoutPage() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!agreed || items.length === 0) return;
-    clear();
-    router.push("/order-confirmation");
+
+    const orderItems: OrderItem[] = items.map((i) => ({
+      id: i.id,
+      name: i.name,
+      price: i.price,
+      qty: i.qty,
+      image: i.image,
+      downloadFile: FALLBACK_PRODUCTS.find((p) => p.id === i.id)?.downloadFile ?? null,
+    }));
+
+    if (user) {
+      addOrder(user.email, orderItems, total);
+      clear();
+      router.push("/order-confirmation");
+    } else {
+      savePendingOrder(orderItems, total);
+      clear();
+      router.push("/register?checkout=1");
+    }
   }
 
   return (
